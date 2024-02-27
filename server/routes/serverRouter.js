@@ -9,10 +9,6 @@ const chatController = require('../controllers/chatController');
 // ADD FUNCTIONALITY
 // see if username not found or password incorrect or username or password missing when signing up
 
-router.get('/logout', (req, res) => {
-  return res.clearCookie('cookieId').redirect('/');
-});
-
 router.post(
   '/signup',
   userController.createUser,
@@ -40,7 +36,7 @@ router.get('/isLoggedIn', sessionController.isLoggedIn, (req, res) => {
 });
 
 router.get('/logout', (req, res) => {
-  return res.clearCookie('cookieId').redirect('/');
+  return res.clearCookie('ssid').redirect('/');
 });
 
 // router.get('/user', userController.getUserDetail, (req, res) => {
