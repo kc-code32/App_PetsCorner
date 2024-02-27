@@ -12,10 +12,8 @@ const PORT = 3000;
 
 const app = express();
 
-// const mongoURI = process.env.NODE_ENV === 'test' ? 'mongodb://localhost/unit11test' : 'mongodb://localhost/unit11dev';
-// mongoose.connect(mongoURI); 
-
-const MONGO_URI = 'mongodb+srv://kelvinchen138:QygYDKRCPRddHDIc@cluster0.xfjiboz.mongodb.net/';
+// create mongoDB database and link project to it 
+const MONGO_URI = 'mongodb+srv://kelvinchen138:ODKms02LZ9qPwWRP@petsdata.m4gibqs.mongodb.net/?retryWrites=true&w=majority&appName=PetsData';
 
 mongoose.connect(MONGO_URI, {
   // options for the connect method to parse the URI
@@ -27,15 +25,19 @@ mongoose.connect(MONGO_URI, {
   .then(() => console.log('Connected to Mongo DB.'))
   .catch(err => console.log(err));
 
-
 /**
+* handle parsing request body 
 * Automatically parse urlencoded body content and form data from incoming requests and place it
-* in req.body
+* in req.body.  
+* handle parsing request cookie with cookieParser  
 */
 app.use(express.json());
 app.use(express.urlencoded());
 app.use(cookieParser());
 
+/**
+ * handle requests for static files
+ */
 app.use('/assets', express.static(path.resolve(__dirname, '../client/assets')));
 
 
@@ -50,7 +52,6 @@ app.use('/assets', express.static(path.resolve(__dirname, '../client/assets')));
 /**
 * root
 */
-
 app.use('/server', serverRouter);
 // app.get('/', (req, res) => {
 //   return res.status(200).sendFile(path.resolve(__dirname, '../client/html/login.html'));
@@ -103,13 +104,14 @@ app.use((err, req, res, next) => {
     status : 400,
     message : {err: 'An error occurred'}
   }
-
   const errObj = Object.assign({}, defaultErr, err);
   console.log(errObj.log);
-
   return res.status(errObj.status).json(errObj.message);
 });
 
+/**
+ * start server
+ */
 app.listen(PORT, ()=>{ console.log(`Listening on port ${PORT}...`); });
 
 module.exports = app;

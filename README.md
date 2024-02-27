@@ -1,1 +1,1 @@
-# Solo-Project
+# Application: Pets Corner 
