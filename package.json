@@ -1,0 +1,64 @@
+{
+  "name": "App_PetsCorner",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "NODE_ENV=production nodemon server/server.js",
+    "build": "NODE_ENV=production webpack",
+    "dev": "NODE_ENV=development nodemon server/server.js & NODE_ENV=development webpack serve",
+    "gulp-prod": "node_modules/.bin/gulp prod",
+    "gulp-dev": "node_modules/.bin/gulp dev"
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "build",
+      "client"
+    ]
+  },
+  "author": "KelvinChen https://github.com/kc-code32 <hello@kelvinchen.io>",
+  "license": "ISC",
+  "dependencies": {
+    "@reduxjs/toolkit": "^1.9.5",
+    "bcrypt": "^5.1.0",
+    "bcryptjs": "^2.4.3",
+    "browserify": "^17.0.0",
+    "cookie-parser": "^1.4.6",
+    "express": "^4.12.3",
+    "express-session": "^1.17.3",
+    "gulp": "^4.0.2",
+    "mongoose": "^6.10.0",
+    "node-fetch": "^3.3.1",
+    "node-sass": "^9.0.0",
+    "prop-types": "^15.6.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-redux": "^8.0.5",
+    "react-router-dom": "^6.11.1",
+    "redux": "^4.0.5",
+    "sass": "^1.63.6",
+    "sass-loader": "^13.3.2",
+    "style-loader": "^3.3.3",
+    "styled-components": "^6.0.0",
+    "webpack": "^5.88.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.22.5",
+    "@babel/preset-env": "^7.22.5",
+    "@babel/preset-react": "^7.22.5",
+    "babel-loader": "^9.1.2",
+    "concurrently": "^6.0.2",
+    "cross-env": "^7.0.3",
+    "css-loader": "^6.8.1",
+    "eslint": "^8.43.0",
+    "eslint-plugin-react": "^7.32.2",
+    "file-loader": "^6.2.0",
+    "html-webpack-plugin": "^5.5.3",
+    "isomorphic-fetch": "^3.0.0",
+    "mini-css-extract-plugin": "^2.7.6",
+    "nodemon": "^2.0.7",
+    "webpack-cli": "^4.8.0",
+    "webpack-dev-server": "^4.15.1",
+    "webpack-hot-middleware": "^2.25.4"
+  }
+}
