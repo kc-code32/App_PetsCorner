@@ -11,23 +11,24 @@ userController.createUser = (req, res, next) => {
   const { username, password, name, age, breed, gender, birthday, city } = req.body;
   if (!username || !password || !name || !age || !breed || !gender || !birthday || !city) {
     res.locals.signedIn = false;
-    return next();
-    // return next({
-    //   log: 'Missing info in userController.createUser',
-    //   status: 400,
-    //   message: { err: 'An error occurred in userController.createUser'}
-    // });
+    // return next();
+    return next({
+      log: 'Missing info in userController.createUser',
+      status: 400,
+      message: { err: 'An error occurred in userController.createUser'}
+    });
+    // return res.redirect('/');
   }
 
   User.create({ username, password, name, age, breed, gender, birthday, city}, (err, user) => {
     if (err) {
       res.locals.signedIn = false;
-      return next();
-      // return next({
-      //   log: 'Error occurred in userController.createUser',
-      //   status: 500,
-      //   message: { err: 'An error occurred in userController.createUser'}
-      // });
+      // return next();
+      return next({
+        log: 'Error occurred in userController.createUser',
+        status: 500,
+        message: { err: 'An error occurred in userController.createUser'}
+      });
     } else {
       // log all the below to see what they looks like and pick what to use
       // console.log('user', user);
@@ -51,30 +52,35 @@ userController.verifyUser = (req, res, next) => {
   const { username, password } = req.body;
   if (!username || !password) {
     res.locals.signedIn = false;
-    return next();
-    // return next({
-    //   log: 'Missing username or password in userController.verifyUser',
-    //   status: 400,
-    //   message: { err: 'An error occurred in userController.verifyUser'}
-    // });
+    // return next();
+    return next({
+      log: 'Missing username or password in userController.verifyUser',
+      status: 400,
+      message: { err: 'An error occurred in userController.verifyUser'}
+    });
   }
 
   User.findOne({ username }, (err, user) => {
     if (err) {
       res.locals.signedIn = false;
-      return next();
-      // return next({
-      //   log: 'Error occurred in userController.verifyUser',
-      //   status: 500,
-      //   message: { err: 'An error occurred in userController.verifyUser'}
-      // });
+      // return next();
+      return next({
+        log: 'Error occurred in userController.verifyUser',
+        status: 500,
+        message: { err: 'An error occurred in userController.verifyUser'}
+      });
     } else {
       bcrypt.compare(password, user.password)
         .then((result) => {
           if (!result) {
             res.locals.signedIn = false;
-            return next();
+            // return next();
             // return res.redirect('signup');
+            return next({
+              log: 'Incorrect password',
+              status: 500,
+              message: { err: 'An error occurred in userController.verifyUser'}
+            });
           } else {
             res.locals.signedIn = true;
             res.locals.userDetail = user;
@@ -84,12 +90,12 @@ userController.verifyUser = (req, res, next) => {
         })
         .catch((err) => {
           res.locals.signedIn = false;
-          return next();
-          // return next({
-          //   log: 'Error occurred in userController.verifyUser',
-          //   status: 500,
-          //   message: { err: 'An error occurred in userController.verifyUser'}
-          // });
+          // return next();
+          return next({
+            log: 'Error occurred in userController.verifyUser',
+            status: 500,
+            message: { err: 'An error occurred in userController.verifyUser'}
+          });
         });
     }
   });
