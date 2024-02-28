@@ -47,9 +47,13 @@ router.get('/isLoggedIn', sessionController.isLoggedIn, (req, res) => {
   return res.json({ loggedIn: res.locals.signedIn, id: req.cookies.ssid });
 });
 
-router.get('/logout', (req, res) => {
-  return res.clearCookie('ssid').redirect('/');
-});
+router.get(
+  '/logout',
+  sessionController.clearSession,
+  (req, res) => {
+    return res.clearCookie('ssid').redirect('/');
+  }
+);
 
 // router.get('/user', userController.getUserDetail, (req, res) => {
 //   return res.json(res.locals.userDetail);
