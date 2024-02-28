@@ -59,4 +59,16 @@ sessionController.startSession = (req, res, next) => {
   } else return next();
 };
 
+sessionController.clearSession = (req, res, next) => {
+  Session.findOneAndDelete({ cookieId: req.cookies.ssid }, 
+    (err, session) => {
+      if (err) return next({
+        log: 'Error occurred in sessionController.clearSession.',
+        status: 500,
+        message: { err: 'An error occurred in sessionController.clearSession.' }
+      });
+      else return next();
+  });
+};
+
 module.exports = sessionController;
