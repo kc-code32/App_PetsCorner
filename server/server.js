@@ -41,6 +41,10 @@ app.use(cookieParser());
 app.use('/assets', express.static(path.resolve(__dirname, '../client/assets')));
 
 
+app.get('/*', (req, res) => {
+  return res.status(200).sendFile(path.resolve(__dirname, '../client/assets/index.html'))
+});
+
 /**
 * --- Express Routes ---
 * Express will attempt to match these routes in the order they are declared here.

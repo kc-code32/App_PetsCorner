@@ -21,6 +21,7 @@ module.exports = {
       publicPath: '/',
     },
     headers: { 'Access-Control-Allow-Origin': '*' },
+    historyApiFallback: true,
     /**
      * proxy is required in order to make api calls to
      * express server while using hot-reload webpack server
@@ -33,6 +34,10 @@ module.exports = {
         secure: false,
       },
       '/server/**': {
+        target: 'http://localhost:3000/',
+        secure: false,
+      },
+      '/**': {
         target: 'http://localhost:3000/',
         secure: false,
       },
@@ -61,12 +66,6 @@ module.exports = {
       },
     ]
   },
-  // plugins: [
-  //   new HtmlWebpackPlugin ({
-  //     title: 'Development',
-  //     template: 'index.html'
-  //   }),
-  // ],
   plugins: [
     new MiniCssExtractPlugin(),
     new HtmlWebpackPlugin({

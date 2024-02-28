@@ -10,16 +10,8 @@ import Chat from '../components/chat';
 export default function Chats() {
   const username = useSelector((state) => state.reducer.username);
   const chats = useSelector((state) => state.reducer.chats);
-  // const name = useSelector((state) => state.reducer.name);
-  // const age = useSelector((state) => state.reducer.age);
-  // const breed = useSelector((state) => state.reducer.breed);
-  // const gender = useSelector((state) => state.reducer.gender);
-  // const city = useSelector((state) => state.reducer.city);
-  // const birthday = useSelector((state) => state.reducer.birthday);
-  // const appointments = useSelector((state) => state.reducer.appointments);
-  // const shotRecords = useSelector((state) => state.reducer.shotRecords);
+
   const dispatch = useDispatch();
-  // const navigate = useNavigate();
 
   // const handleClickUpdateShot = (username, vaccine, lastVaccinated, dueDate) => {
   //   // console.log('apt', appointment);
