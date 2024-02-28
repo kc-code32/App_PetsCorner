@@ -9,10 +9,6 @@ const chatController = require('../controllers/chatController');
 // ADD FUNCTIONALITY
 // see if username not found or password incorrect or username or password missing when signing up
 
-router.get('/logout', (req, res) => {
-  return res.clearCookie('cookieId').redirect('/');
-});
-
 router.post(
   '/signup',
   userController.createUser,
@@ -20,7 +16,14 @@ router.post(
   sessionController.startSession,
   chatController.getChats,
   (req, res) => {
-    return res.json({ loggedIn: res.locals.signedIn, id: res.locals.userId, user: res.locals.userDetail, chats: res.locals.chats});
+    return res.json({ 
+      existName: res.locals.existName,
+      missInfo: res.locals.missInfo, 
+      loggedIn: res.locals.signedIn, 
+      id: res.locals.userId, 
+      user: res.locals.userDetail, 
+      chats: res.locals.chats
+    });
   }
 );
 
@@ -31,7 +34,12 @@ router.post(
   sessionController.startSession,
   chatController.getChats,
   (req, res) => {
-    return res.json({ loggedIn: res.locals.signedIn, id: res.locals.userId, user: res.locals.userDetail, chats: res.locals.chats});
+    return res.json({ 
+      loggedIn: res.locals.signedIn, 
+      id: res.locals.userId, 
+      user: res.locals.userDetail, 
+      chats: res.locals.chats
+    });
   }
 );
 
@@ -40,7 +48,7 @@ router.get('/isLoggedIn', sessionController.isLoggedIn, (req, res) => {
 });
 
 router.get('/logout', (req, res) => {
-  return res.clearCookie('cookieId').redirect('/');
+  return res.clearCookie('ssid').redirect('/');
 });
 
 // router.get('/user', userController.getUserDetail, (req, res) => {
