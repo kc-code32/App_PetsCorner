@@ -5,14 +5,48 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 
 module.exports = {
+  mode: process.env.NODE_ENV,
   entry : './client/index.js',
   output : {
     path: path.resolve(__dirname, './dist'),
     publicPath: '/',
     filename: 'bundle.js',
   },
+  
+  module: {
+    rules: [
+      {
+        test: /\.jsx?/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            // presets: [
+            //   ['@babel/preset-env', { targets: "defaults" }],
+            //   ['@babel/preset-react', { targets: "defaults" }]
+            // ]
+            presets: ['@babel/env', '@babel/react']
+          }
+        }
+      },
+      {
+        // test: /\.s[ac]ss$/i, 
+        test: /\.s?css/, 
+        // test: /\.(css)$/,
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'] // MiniCssExtractPlugin.loader to style-loader
+      },
+    ]
+  },
+
+  plugins: [
+    new MiniCssExtractPlugin(),
+    new HtmlWebpackPlugin({
+      template: './client/assets/index.html',
+    }),
+  ],
+
   devtool: 'eval-source-map',
-  mode: process.env.NODE_ENV,
+  
   devServer: {
     static: {
       // match the output path
@@ -21,7 +55,7 @@ module.exports = {
       publicPath: '/',
     },
     headers: { 'Access-Control-Allow-Origin': '*' },
-    historyApiFallback: true,
+    // historyApiFallback: true,
     /**
      * proxy is required in order to make api calls to
      * express server while using hot-reload webpack server
@@ -37,41 +71,13 @@ module.exports = {
         target: 'http://localhost:3000/',
         secure: false,
       },
-      '/**': {
-        target: 'http://localhost:3000/',
-        secure: false,
-      },
+      // '/**': {
+      //   target: 'http://localhost:3000/',
+      //   secure: false,
+      // },
     },
   },
-  module: {
-    rules: [
-      {
-        test: /\.jsx?/,
-        exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: [
-              ['@babel/preset-env', { targets: "defaults" }],
-              ['@babel/preset-react', { targets: "defaults" }]
-            ]
-          }
-        }
-      },
-      {
-        // test: /\.s[ac]ss$/i, 
-        test: /\.s?css/, 
-        // test: /\.(css)$/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'] // MiniCssExtractPlugin.loader to style-loader
-      },
-    ]
-  },
-  plugins: [
-    new MiniCssExtractPlugin(),
-    new HtmlWebpackPlugin({
-      template: './client/assets/index.html',
-    }),
-  ],
+
   performance: {
     hints: false,
     maxEntrypointSize: 512000,
