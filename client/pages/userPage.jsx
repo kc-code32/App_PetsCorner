@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { tryingToLogIn, loggingIn, setUser } from '../reducers/reducer';
+import { setUserName, setName, setAge, setBreed, setGender, setBirthday, setCity, setAppoinment, setShotRecord, setChats } from '../reducers/reducer';
 import { useNavigate } from 'react-router-dom';
 import UserProfile from '../containers/userProfile';
 import UserContent from '../containers/userContent';
@@ -11,28 +11,36 @@ export default function userPage() {
   const user = useSelector((state) => state.reducer.currentUser);
   const state = useSelector((state) => state.reducer);
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
-  console.log(state)
+  // console.log(state);
 
-  // fetch('/server/user', {
-  //   method: 'GET',
-  //   headers: {
-  //     'Content-Type': 'application/json',
-  //   },
-  //   body: JSON.stringify({ user }),
-  // })
-  //   .then((res) => res.json())
-  //   .then((res) => {
-  //     dispatch(setName(res.name));
-  //     dispatch(setAge(res.age));
-  //     dispatch(setBreed(res.breed));
-  //     dispatch(setGender(res.gender));
-  //     dispatch(setBirthday(res.birthday));
-  //     dispatch(setCity(res.city));
-  //     dispatch(setAppoinment(res.appointments));
-  //     dispatch(setShotRecord(res.shotRecords));
-  //   })
+  if(!state.name) {
+    fetch('/server/user', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      // body: JSON.stringify({ user }),
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        console.log(res);
+        dispatch(setUserName(res.user.username));
+        dispatch(setName(res.user.name));
+        dispatch(setAge(res.user.age));
+        dispatch(setBreed(res.user.breed));
+        dispatch(setGender(res.user.gender));
+        dispatch(setBirthday(res.user.birthday));
+        dispatch(setCity(res.user.city));
+        dispatch(setAppoinment(res.user.appointments));
+        dispatch(setShotRecord(res.user.shotRecords));
+        dispatch(setChats(res.chats));
+        // console.log('newstate', state);
+      });
+  }
+
+  console.log('newstate', state);
+
 
   return (
     <div className='background-pic-user'>

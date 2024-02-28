@@ -23,7 +23,7 @@ const App = () => {
         });
     }
     checkLoggedIN();
-  });
+  }, []);
 
   return(
     <div>
