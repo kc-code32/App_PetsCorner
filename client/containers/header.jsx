@@ -16,8 +16,8 @@ export default function header() {
     ];
   else {
     navlinks = [
-      // <NavLink nav='Queries' link='/queries' key='queries' />,
       <NavLink nav='Log out' link='/logout' key='logout' />,
+      <NavLink nav='Profile' link='/user' key='user' />,
       // <ThemeColor key='themeColor' />,
     ];
   }
