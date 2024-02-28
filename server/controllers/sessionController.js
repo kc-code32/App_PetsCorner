@@ -29,6 +29,7 @@ sessionController.isLoggedIn = (req, res, next) => {
         // return res.redirect('/');
       } else {
         res.locals.signedIn = true;
+        // res.locals.userId = req.cookies.ssid;
         return next();
       }
     }

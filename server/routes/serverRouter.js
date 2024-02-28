@@ -43,9 +43,16 @@ router.post(
   }
 );
 
-router.get('/isLoggedIn', sessionController.isLoggedIn, (req, res) => {
-  return res.json({ loggedIn: res.locals.signedIn, id: req.cookies.ssid });
-});
+router.get(
+  '/isLoggedIn', 
+  sessionController.isLoggedIn, 
+  (req, res) => {
+    return res.json({ 
+      loggedIn: res.locals.signedIn, 
+      id: req.cookies.ssid, 
+    });
+  }
+);
 
 router.get(
   '/logout',
@@ -55,33 +62,79 @@ router.get(
   }
 );
 
-// router.get('/user', userController.getUserDetail, (req, res) => {
-//   return res.json(res.locals.userDetail);
-// });
+router.get(
+  '/user', 
+  userController.getUserDetail, 
+  chatController.getChats,
+  (req, res) => {
+    return res.json({  
+      user: res.locals.userDetail, 
+      chats: res.locals.chats
+    });
+  }
+);
 
-router.patch('/addApt', userController.addAppointment, (req, res) => {
-  return res.json({ appointments: res.locals.appointments });
-});
+router.patch(
+  '/addApt', 
+  userController.addAppointment, 
+  (req, res) => {
+    return res.json({ 
+      appointments: res.locals.appointments 
+    });
+  }
+);
 
-router.patch('/deleteApt', userController.deleteAppointment, (req, res) => {
-  return res.json({ appointments: res.locals.appointments });
-});
+router.patch(
+  '/deleteApt', 
+  userController.deleteAppointment, 
+  (req, res) => {
+    return res.json({ 
+      appointments: res.locals.appointments 
+    });
+  }
+);
 
-router.patch('/addShot', userController.addVaccination, (req, res) => {
-  return res.json({ shotRecords: res.locals.shotRecords });
-});
+router.patch(
+  '/addShot',
+  userController.addVaccination, 
+  (req, res) => {
+    return res.json({ 
+      shotRecords: res.locals.shotRecords 
+    });
+  }
+);
 
-router.patch('/deleteShot', userController.deteleVaccination, (req, res) => {
-  return res.json({ shotRecords: res.locals.shotRecords });
-});
+router.patch(
+  '/deleteShot', 
+  userController.deteleVaccination, 
+  (req, res) => {
+    return res.json({ 
+      shotRecords: res.locals.shotRecords 
+  });
+  }
+);
 
-router.patch('/updateShot', userController.deteleVaccination, userController.addVaccination, (req, res) => {
-  return res.json({ shotRecords: res.locals.shotRecords });
-});
+router.patch(
+  '/updateShot', 
+  userController.deteleVaccination, 
+  userController.addVaccination, 
+  (req, res) => {
+    return res.json({ 
+      shotRecords: res.locals.shotRecords 
+    });
+  }
+);
 
-router.post('/chats', chatController.createChat, chatController.getChats, (req, res) => {
-  return res.json({ chats: res.locals.chats});
-});
+router.post(
+  '/chats', 
+  chatController.createChat, 
+  chatController.getChats, 
+  (req, res) => {
+    return res.json({ 
+      chats: res.locals.chats 
+    });
+  }
+);
 
 
 module.exports = router;

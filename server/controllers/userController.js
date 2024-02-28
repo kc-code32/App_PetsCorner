@@ -109,23 +109,23 @@ userController.verifyUser = (req, res, next) => {
   });
 };
 
-// userController.getUserDetail = (req, res, next) => {
-//   const { user } = req.body;
-//   User.findOne({ _id: user }, (err, user) => {
-//     if (err) {
-//       // res.locals.signedIn = false;
-//       // return next();
-//       return next({
-//         log: 'Error occurred in userController.verifyUser',
-//         status: 500,
-//         message: { err: 'An error occurred in userController.verifyUser'}
-//       });
-//     } else {
-//       res.locals.userDetail = user;
-//       return next();
-//     }
-//   });
-// }
+userController.getUserDetail = (req, res, next) => {
+  const user = req.cookies.ssid;
+  User.findOne({ _id: user }, (err, user) => {
+    if (err) {
+      // res.locals.signedIn = false;
+      // return next();
+      return next({
+        log: 'Error occurred in userController.verifyUser',
+        status: 500,
+        message: { err: 'An error occurred in userController.verifyUser'}
+      });
+    } else {
+      res.locals.userDetail = user;
+      return next();
+    }
+  });
+}
 
 userController.addAppointment = async (req, res, next) => {
   try {
