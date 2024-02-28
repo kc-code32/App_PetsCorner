@@ -35,6 +35,8 @@ export default function logInPage() {
           dispatch(setChats(res.chats));
           // dispatch(loggingIn(res.loggedIn));
           navigate('/user');
+        } else {
+          alert('Please enter valid username and password');
         }
       });
   };

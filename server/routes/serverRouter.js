@@ -34,7 +34,12 @@ router.post(
   sessionController.startSession,
   chatController.getChats,
   (req, res) => {
-    return res.json({ loggedIn: res.locals.signedIn, id: res.locals.userId, user: res.locals.userDetail, chats: res.locals.chats});
+    return res.json({ 
+      loggedIn: res.locals.signedIn, 
+      id: res.locals.userId, 
+      user: res.locals.userDetail, 
+      chats: res.locals.chats
+    });
   }
 );
 
