@@ -5,30 +5,38 @@ const bcrypt = require('bcryptjs');
 const userController = {};
 
 /**
+* commented out return errObj to pass status res to frontend
+*/
+
+/**
 * createUser - create and save a new User into the database.
 */
 userController.createUser = (req, res, next) => {
   const { username, password, name, age, breed, gender, birthday, city } = req.body;
   if (!username || !password || !name || !age || !breed || !gender || !birthday || !city) {
     res.locals.signedIn = false;
-    // return next();
-    return next({
-      log: 'Missing info in userController.createUser',
-      status: 400,
-      message: { err: 'An error occurred in userController.createUser'}
-    });
+    res.locals.missInfo = true;
+    console.log('Missing info in userController.createUser');
+    return next();
+    // return next({
+    //   log: 'Missing info in userController.createUser',
+    //   status: 400,
+    //   message: { err: 'An error occurred in userController.createUser'}
+    // });
     // return res.redirect('/');
   }
 
   User.create({ username, password, name, age, breed, gender, birthday, city}, (err, user) => {
     if (err) {
       res.locals.signedIn = false;
-      // return next();
-      return next({
-        log: 'Error occurred in userController.createUser',
-        status: 500,
-        message: { err: 'An error occurred in userController.createUser'}
-      });
+      res.locals.existName = true;
+      console.log('Error occurred in userController.createUser');
+      return next();
+      // return next({
+      //   log: 'Error occurred in userController.createUser',
+      //   status: 500,
+      //   message: { err: 'An error occurred in userController.createUser'}
+      // });
     } else {
       // log all the below to see what they looks like and pick what to use
       // console.log('user', user);

@@ -19,6 +19,7 @@ export default function signupPage() {
     })
       .then((res) => res.json())
       .then((res) => {
+        console.log(res);
         dispatch(setUser(res.id));
         dispatch(tryingToLogIn(res.loggedIn));
         if (res.loggedIn) {
@@ -34,8 +35,14 @@ export default function signupPage() {
           dispatch(setShotRecord(res.user.shotRecords));
           dispatch(setChats(res.chats));
           navigate('/user');
+        } else if (res.missInfo) {
+          alert('Incorrect Info');
+          // navigate('/');
+        } else if (res.existName) {
+          alert('UserName already in used, please pick another UserName');
         }
-      });
+      })
+      .catch(err => console.log(err));
   };
 
   let userError;

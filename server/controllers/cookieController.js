@@ -23,7 +23,7 @@ cookieController.setSSIDCookie = (req, res, next) => {
         status : 400,
         message : {err: error}
       }))
-  }
+  } else return next();
 }
 
 module.exports = cookieController;

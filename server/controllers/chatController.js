@@ -34,18 +34,20 @@ chatController.createChat = (req, res, next) => {
 };
 
 chatController.getChats = async (req, res, next) => {
-  try{
-    const doc = await Chat.find().sort({_id:-1}).limit(50);
-    res.locals.chats = doc;
-    // console.log(doc);
-    return next();
-  } catch(err) {
-    return next({
-        log: 'Error occurred in chatController.getChat',
-        status: 500,
-        message: { err: 'An error occurred in chatController.getChat'}
-    })
-  }
+  if (res.locals.signedIn) {
+    try{
+      const doc = await Chat.find().sort({_id:-1}).limit(50);
+      res.locals.chats = doc;
+      // console.log(doc);
+      return next();
+    } catch(err) {
+      return next({
+          log: 'Error occurred in chatController.getChat',
+          status: 500,
+          message: { err: 'An error occurred in chatController.getChat'}
+      })
+    }
+  } else return next();
 }
 
 module.exports = chatController;
