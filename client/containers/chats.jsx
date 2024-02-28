@@ -91,7 +91,7 @@ export default function Chats() {
       <div className='postChat'>
         <form>
           <div className='chats-input'>
-            <label className='form-label-chat'>Me share: </label>
+            <label className='form-label-chat'>Share: </label>
             <input placeholder='BARK BARK MEOW MEOW' type='text' className='chat-input' id='message' />
             {/* <input 
             className='chatPostButton'
