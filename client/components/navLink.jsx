@@ -19,9 +19,7 @@ export default function navLink({ nav, link }) {
         className='nav-link'
         to={link}
         href={link}
-        onClick={() => {
-          dispatch(tryingToLogIn(null));          
-        }}>
+      >
         {nav}
       </Link>
     );
