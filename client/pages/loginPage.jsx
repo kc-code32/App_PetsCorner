@@ -6,7 +6,6 @@ import { useNavigate } from 'react-router-dom';
 export default function logInPage() {
   const dispatch = useDispatch();
   const triedToLogIn = useSelector((state) => state.reducer.triedToLogIn);
-  // const loggingIn = useSelector((state) => state.reducer.loggingIn);
   const navigate = useNavigate();
 
   const login = (username, password) => {
@@ -33,7 +32,6 @@ export default function logInPage() {
           dispatch(setAppoinment(res.user.appointments));
           dispatch(setShotRecord(res.user.shotRecords));
           dispatch(setChats(res.chats));
-          // dispatch(loggingIn(res.loggedIn));
           navigate('/user');
         } else {
           alert('Please enter valid username and password');

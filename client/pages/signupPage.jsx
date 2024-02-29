@@ -2,7 +2,6 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { tryingToLogIn, loggingIn, setUser, setName, setAge, setBreed, setGender, setBirthday, setCity, setAppoinment, setShotRecord, setUserName, setChats } from '../reducers/reducer';
 import { useNavigate } from 'react-router-dom';
-// import background from 'assets/image/homepage.jpg';
 
 export default function signupPage() {
   const dispatch = useDispatch();
@@ -37,7 +36,6 @@ export default function signupPage() {
           navigate('/user');
         } else if (res.missInfo) {
           alert('Incorrect Info');
-          // navigate('/');
         } else if (res.existName) {
           alert('UserName already in used, please pick another UserName');
         }
