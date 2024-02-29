@@ -53,9 +53,10 @@ app.use('/assets', express.static(path.resolve(__dirname, '../client/assets')));
 * root
 */
 app.use('/server', serverRouter);
-// app.get('/', (req, res) => {
-//   return res.status(200).sendFile(path.resolve(__dirname, '../client/html/login.html'));
-// });
+app.get('/', (req, res) => {
+  console.log('try to load');
+  return res.status(200).sendFile(path.resolve(__dirname, '../index.html'));
+});
 
 // /**
 // * signup
