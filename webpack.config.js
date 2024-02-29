@@ -8,7 +8,7 @@ module.exports = {
   mode: process.env.NODE_ENV,
   entry : './client/index.js',
   output : {
-    path: path.resolve(__dirname, './dist'),
+    path: path.resolve(__dirname, './bulid'),
     publicPath: '/',
     filename: 'bundle.js',
   },
@@ -43,7 +43,7 @@ module.exports = {
   devServer: {
     static: {
       // match the output path
-      directory: path.resolve(__dirname, 'dist'),
+      directory: path.resolve(__dirname, 'build'),
       // match the output 'publicPath'
       publicPath: '/',
     },
