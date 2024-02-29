@@ -14,7 +14,6 @@ const initialState = {
   appointments: [],
   shotRecords: [],
   chats: [],
-  // colorTheme: null,
 }
 
 export const reducer = createSlice({
@@ -65,9 +64,6 @@ export const reducer = createSlice({
     setChats: (state, action) => {
       state.chats = action.payload;
     },
-    // changeTheme: (state, action) => {
-    //   state.colorTheme = action.payload;
-    // },
   }
 })
 
@@ -75,7 +71,6 @@ export const {
   setUserName,
   loggingIn,
   tryingToLogIn,
-  // changeTheme,
   setUser,
   setName, 
   setAge, 
