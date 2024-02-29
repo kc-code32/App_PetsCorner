@@ -22,8 +22,8 @@ export default function homePage() {
   //   </div>
   // );
   return (
-    <body className='homepage-background'>
+    <div className='homepage-background'>
       <img id='homepage-background' src='assets/image/homepage.jpg' />
-    </body>
+    </div>
   )
 }
