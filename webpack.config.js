@@ -9,8 +9,8 @@ module.exports = {
   entry : './client/index.js',
   output : {
     path: path.resolve(__dirname, './bulid'),
-    publicPath: '/',
     filename: 'bundle.js',
+    publicPath: '/',
   },
   module: {
     rules: [
@@ -39,13 +39,13 @@ module.exports = {
       // },
     ]
   },
-  devtool: 'eval-source-map',
+  // devtool: 'eval-source-map',
   devServer: {
     static: {
       // match the output path
       directory: path.resolve(__dirname, 'build'),
       // match the output 'publicPath'
-      publicPath: '/',
+      publicPath: '/build',
     },
     headers: { 'Access-Control-Allow-Origin': '*' },
     historyApiFallback: true,

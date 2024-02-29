@@ -12,11 +12,10 @@
   },
   "nodemonConfig": {
     "ignore": [
-      "build",
-      "client"
+      "build"
     ]
   },
-  "author": "KelvinChen https://github.com/kc-code32 <hello@kelvinchen.io>",
+  "author": "KelvinChen https://github.com/kc-code32",
   "license": "ISC",
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.5",
@@ -38,6 +37,7 @@
     "redux": "^4.0.5",
     "sass": "^1.63.6",
     "sass-loader": "^13.3.2",
+    "scss-loader": "^0.0.1",
     "style-loader": "^3.3.3",
     "styled-components": "^6.0.0",
     "webpack": "^5.88.0"
