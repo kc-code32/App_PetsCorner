@@ -23,8 +23,8 @@ mongoose.connect(MONGO_URI, {
 
 /**
 * handle parsing request body 
-* Automatically parse urlencoded body content and form data from incoming requests and place it
-* in req.body.  
+* Automatically parse urlencoded body content and form data from 
+* incoming requests and place it in req.body.  
 * handle parsing request cookie with cookieParser  
 */
 app.use(express.json());
@@ -39,6 +39,11 @@ app.use('/assets', express.static(path.join(__dirname, '../client/assets')));
 // statically serve everything in the build folder on the route '/build'
 app.use('/build', express.static(path.join(__dirname, '../build')));
 
+// serve index.html on the route '/'
+app.get('/**', (req, res) => {
+  console.log('try to load');
+  return res.status(200).sendFile(path.join(__dirname, '../index.html'));
+});
 
 /**
 * --- Express Routes ---
@@ -52,43 +57,6 @@ app.use('/build', express.static(path.join(__dirname, '../build')));
 * root
 */
 app.use('/server', serverRouter);
-
-// serve index.html on the route '/'
-app.get('/**', (req, res) => {
-  console.log('try to load');
-  return res.status(200).sendFile(path.join(__dirname, '../index.html'));
-});
-
-// /**
-// * signup
-// */
-// app.get('/signup', (req, res) => {
-//   return res.status(200).sendFile(path.resolve(__dirname, '../client/html/signup.html'));
-// });
-
-// app.post('/signup', userController.createUser, sessionController.startSession, cookieController.setSSIDCookie, (req, res, next) => {
-//   // what should happen here on successful sign up?
-//   return res.redirect('/user');
-// });
-
-
-// /**
-// * login
-// */
-// app.post('/login', userController.verifyUser, sessionController.startSession, cookieController.setSSIDCookie, (req, res) => {
-//   // what should happen here on successful log in?
-//   return res.redirect('/user');
-// });
-
-
-// /**
-// * Authorized routes
-// */
-// app.get('/user', sessionController.isLoggedIn, (req, res) => {
-//   // console.log('accessed secret');
-//   return res.status(200).sendFile(path.resolve(__dirname, '../client/html/user.html'));
-// });
-
 
 /**
  * 404 handler
