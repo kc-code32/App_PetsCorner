@@ -7,11 +7,6 @@ const sessionController = {};
 * verify whether or not the session is still valid.
 */
 sessionController.isLoggedIn = (req, res, next) => {
-  // write code here
-
-  // access req.cookies.ssid
-  // const ssidValue = req.cookies.ssid;
-
   // access mongodb using find session by using value of ssid as the cookieId value
   Session.findOne({ cookieId: req.cookies.ssid }, 
     (err, session) => {
@@ -29,7 +24,6 @@ sessionController.isLoggedIn = (req, res, next) => {
         // return res.redirect('/');
       } else {
         res.locals.signedIn = true;
-        // res.locals.userId = req.cookies.ssid;
         return next();
       }
     }
@@ -40,14 +34,7 @@ sessionController.isLoggedIn = (req, res, next) => {
 * startSession - create and save a new Session into the database.
 */
 sessionController.startSession = (req, res, next) => {
-  //write code here  Session.create({cookieId: ....})
   if (res.locals.signedIn) {
-  //   Session.findOneAndUpdate({ cookieId: res.locals.ssid }, { cookieId: res.locals.ssid }, { upsert: true }).then(
-  //     () => {
-  //       res.cookie('cookieId', res.locals.ssid, { httpOnly: true, maxAge: 90*1000, secure: true });
-  //       return next();
-  //     }
-  //   );
     Session.create({ cookieId : res.locals.userId }, 
       (err, session) => {
         if (err) return next({
@@ -60,6 +47,9 @@ sessionController.startSession = (req, res, next) => {
   } else return next();
 };
 
+/**
+* startSession - find and remove target Session from the database.
+*/
 sessionController.clearSession = (req, res, next) => {
   Session.findOneAndDelete({ cookieId: req.cookies.ssid }, 
     (err, session) => {
