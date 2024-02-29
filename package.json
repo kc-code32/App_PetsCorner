@@ -2,7 +2,7 @@
   "name": "App_PetsCorner",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "../client/index.js",
   "scripts": {
     "start": "NODE_ENV=production node server/server.js",
     "build": "NODE_ENV=production webpack",
@@ -12,11 +12,10 @@
   },
   "nodemonConfig": {
     "ignore": [
-      "build",
-      "client"
+      "build"
     ]
   },
-  "author": "KelvinChen https://github.com/kc-code32 <hello@kelvinchen.io>",
+  "author": "KelvinChen https://github.com/kc-code32",
   "license": "ISC",
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.5",

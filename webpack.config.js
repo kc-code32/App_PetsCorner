@@ -7,18 +7,19 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 module.exports = {
   entry : './client/index.js',
   output : {
-    path: path.resolve(__dirname, './dist'),
-    publicPath: '/',
+    path: path.resolve(__dirname, './build'),
     filename: 'bundle.js',
+    publicPath: '/',
   },
-  devtool: 'eval-source-map',
+  // devtool: 'eval-source-map',
   mode: process.env.NODE_ENV,
   devServer: {
+    historyApiFallback: true,
     static: {
       // match the output path
-      directory: path.resolve(__dirname, 'dist'),
+      directory: path.resolve(__dirname, 'build'),
       // match the output 'publicPath'
-      publicPath: '/',
+      publicPath: '/build',
     },
     headers: { 'Access-Control-Allow-Origin': '*' },
     /**
@@ -53,31 +54,35 @@ module.exports = {
           }
         }
       },
+      // {
+      //   // test: /\.s[ac]ss$/i, 
+      //   test: /\.s?css/, 
+      //   // test: /\.(css)$/,
+      //   use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'] // MiniCssExtractPlugin.loader to style-loader
+      // },
       {
-        // test: /\.s[ac]ss$/i, 
-        test: /\.s?css/, 
-        // test: /\.(css)$/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'] // MiniCssExtractPlugin.loader to style-loader
-      },
+        test: /\.s?css/,
+        use: ['style-loader', 'css-loader', 'sass-loader']
+      }
     ]
   },
-  // plugins: [
-  //   new HtmlWebpackPlugin ({
-  //     title: 'Development',
-  //     template: 'index.html'
-  //   }),
-  // ],
   plugins: [
-    new MiniCssExtractPlugin(),
-    new HtmlWebpackPlugin({
-      template: './client/assets/index.html',
+    new HtmlWebpackPlugin ({
+      title: 'Development',
+      template: './index.html'
     }),
   ],
+//   plugins: [
+//     new MiniCssExtractPlugin(),
+//     new HtmlWebpackPlugin({
+//       template: './client/assets/index.html',
+//     }),
+//   ],
   performance: {
     hints: false,
     maxEntrypointSize: 512000,
     maxAssetSize: 512000
-},
+  },
   resolve: {
     // Enable importing JS / JSX files without specifying their extension
     extensions: ['.js', '.jsx'],
