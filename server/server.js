@@ -40,6 +40,8 @@ app.use(cookieParser());
  */
 app.use('/assets', express.static(path.resolve(__dirname, '../client/assets')));
 
+// statically serve everything in the build folder on the route '/build'
+app.use('/build', express.static(path.join(__dirname, '../build')));
 
 /**
 * --- Express Routes ---
@@ -53,9 +55,11 @@ app.use('/assets', express.static(path.resolve(__dirname, '../client/assets')));
 * root
 */
 app.use('/server', serverRouter);
-// app.get('/', (req, res) => {
-//   return res.status(200).sendFile(path.resolve(__dirname, '../client/html/login.html'));
-// });
+
+// serve index.html on the route '/'
+app.get('/**', (req, res) => {
+  return res.status(200).sendFile(path.join(__dirname, '../index.html'));
+});
 
 // /**
 // * signup
