@@ -8,7 +8,7 @@ module.exports = {
   mode: process.env.NODE_ENV,
   entry : './client/index.js',
   output : {
-    path: path.resolve(__dirname, './dist'),
+    path: path.resolve(__dirname, './build'),
     publicPath: '/',
     filename: 'bundle.js',
   },

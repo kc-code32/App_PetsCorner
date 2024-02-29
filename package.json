@@ -16,7 +16,7 @@
       "client"
     ]
   },
-  "author": "KelvinChen https://github.com/kc-code32 <hello@kelvinchen.io>",
+  "author": "KelvinChen https://github.com/kc-code32",
   "license": "ISC",
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.5",
