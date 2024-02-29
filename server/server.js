@@ -4,10 +4,6 @@ const serverRouter = require('./routes/serverRouter');
 const cookieParser = require('cookie-parser');
 const mongoose = require('mongoose');
 
-// const userController = require('./controllers/userController');
-// const cookieController = require('./controllers/cookieController');
-// const sessionController = require('./controllers/sessionController');
-
 const PORT = 3000;
 
 const app = express();
