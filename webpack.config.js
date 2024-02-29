@@ -2,8 +2,6 @@ const path = require("path");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
-
-
 module.exports = {
   entry : './client/index.js',
   output : {
@@ -11,7 +9,6 @@ module.exports = {
     filename: 'bundle.js',
     publicPath: '/',
   },
-  // devtool: 'eval-source-map',
   mode: process.env.NODE_ENV,
   devServer: {
     historyApiFallback: true,
@@ -54,16 +51,10 @@ module.exports = {
           }
         }
       },
-      // {
-      //   // test: /\.s[ac]ss$/i, 
-      //   test: /\.s?css/, 
-      //   // test: /\.(css)$/,
-      //   use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'] // MiniCssExtractPlugin.loader to style-loader
-      // },
       {
         test: /\.s?css/,
         use: ['style-loader', 'css-loader', 'sass-loader']
-      }
+      },
     ]
   },
   plugins: [
@@ -72,12 +63,6 @@ module.exports = {
       template: './index.html'
     }),
   ],
-//   plugins: [
-//     new MiniCssExtractPlugin(),
-//     new HtmlWebpackPlugin({
-//       template: './client/assets/index.html',
-//     }),
-//   ],
   performance: {
     hints: false,
     maxEntrypointSize: 512000,

@@ -1,38 +1,28 @@
 const Chat = require('../models/chatModel');
-// const Session = require('../models/sessionModel.js');
-// const bcrypt = require('bcryptjs');
 
 const chatController = {};
 
 /**
-* createUser - create and save a new User into the database.
+* createChat - add new chat to database
 */
 chatController.createChat = (req, res, next) => {
   const { username, timeStamp, message } = req.body;
-  // if (!username || !password || !name || !age || !breed || !gender || !birthday || !city) {
-  //   res.locals.signedIn = false;
-  //   return next();
-  //   // return next({
-  //   //   log: 'Missing info in userController.createUser',
-  //   //   status: 400,
-  //   //   message: { err: 'An error occurred in userController.createUser'}
-  //   // });
-  // }
   Chat.create({ username, timeStamp, message }, (err, chat) => {
     if (err) {
-      // return next();
       return next({
         log: 'Error occurred in userController.createUser',
         status: 500,
         message: { err: 'An error occurred in userController.createUser'}
       });
     } else {
-      // res.locals.newChat = chat;
       return next();
     }
   });
 };
 
+/**
+* getChat - get the last 50 chats from database
+*/
 chatController.getChats = async (req, res, next) => {
   try{
     const doc = await Chat.find().sort({_id:-1}).limit(50);

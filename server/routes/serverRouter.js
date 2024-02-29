@@ -7,7 +7,6 @@ const sessionController = require('../controllers/sessionController');
 const chatController = require('../controllers/chatController');
 
 // ADD FUNCTIONALITY
-// see if username not found or password incorrect or username or password missing when signing up
 
 router.post(
   '/signup',
@@ -135,7 +134,6 @@ router.post(
     });
   }
 );
-
 
 module.exports = router;
 

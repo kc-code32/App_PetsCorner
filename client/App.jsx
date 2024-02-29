@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import HeaderContainer from './containers/header.jsx';
-// import FooterContainer from './containers/footer.jsx';
 import { Routes, Route } from 'react-router-dom';
 import Home from './pages/homePage.jsx';
 import SignUp from './pages/signupPage.jsx';
