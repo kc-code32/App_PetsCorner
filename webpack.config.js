@@ -7,7 +7,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 module.exports = {
   entry : './client/index.js',
   output : {
-    path: path.join(__dirname, './dist'),
+    path: path.resolve(__dirname, './build'),
     filename: 'bundle.js',
     publicPath: '/',
   },
@@ -17,9 +17,9 @@ module.exports = {
     historyApiFallback: true,
     static: {
       // match the output path
-      directory: path.resolve(__dirname, 'dist'),
+      directory: path.resolve(__dirname, 'build'),
       // match the output 'publicPath'
-      publicPath: '/',
+      publicPath: '/build',
     },
     headers: { 'Access-Control-Allow-Origin': '*' },
     /**
