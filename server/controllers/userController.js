@@ -113,7 +113,6 @@ userController.getUserDetail = (req, res, next) => {
   const user = req.cookies.ssid;
   User.findOne({ _id: user }, (err, user) => {
     if (err) {
-      // res.locals.signedIn = false;
       // return next();
       return next({
         log: 'Error occurred in userController.verifyUser',
@@ -149,14 +148,14 @@ userController.addAppointment = async (req, res, next) => {
 userController.deleteAppointment = async (req, res, next) => {
   try {
     const { username, appointment } = req.body;
-    console.log('apt', appointment);
-    console.log('name', username)
+    // console.log('apt', appointment);
+    // console.log('name', username);
     const doc = await User.findOneAndUpdate({ username }, 
       { $pull: { appointments: appointment }}, 
       {new: true}
     )
     res.locals.appointments = doc.appointments;
-    console.log('after',res.locals.appointments);
+    // console.log('after',res.locals.appointments);
     return next();
   } catch(err) {
     return next({
@@ -190,15 +189,13 @@ userController.addVaccination = async (req, res, next) => {
 userController.deteleVaccination = async (req, res, next) => {
   try {
     const { username, vaccine, lastVaccinated, dueDate } = req.body;
-    // if (!lastVaccinated || !dueDate) return next();
     const doc = await User.findOneAndUpdate({ username }, 
       { $pull: { shotRecords: { vaccine } }}, 
       {new: true}
     )
-    // const newDoc = await User.findOneAndUpdate({ username }, 
-    //   { $push: { shotRecords: { vaccine, lastVaccinated, dueDate }}}, 
-    //   {new: true}
-    // )
+    // tried to update instead of remove and add, didn't work, will lookback at it
+    // add it to a new function updateVaccination to try later
+    // if (!lastVaccinated || !dueDate) return next();
     // const doc = await User.findOneAndUpdate({ username, vaccine }, 
     //   { $set: { lastVaccinated, dueDate }}, 
     //   {new: true}
@@ -215,5 +212,28 @@ userController.deteleVaccination = async (req, res, next) => {
   }
 }
 
+// !!!!!! test it later !!!!!!
+// !!!!!! test it later !!!!!!
+// !!!!!! test it later !!!!!!
+userController.updateVaccination = async (req, res, next) => {
+  try {
+    const { username, vaccine, lastVaccinated, dueDate } = req.body;
+    // tried to update instead of remove and add, didn't work, will lookback at it
+    if (!lastVaccinated || !dueDate) return next();
+    const doc = await User.findOneAndUpdate({ username, vaccine }, 
+      { $set: { lastVaccinated, dueDate }}, 
+      {new: true}
+    )
+    res.locals.shotRecords = doc.shotRecords;
+    // console.log(res.locals.appointments);
+    return next();
+  } catch(err) {
+    return next({
+      log: 'Error occurred in userController.updateVaccination',
+      status: 500,
+      message: { err: 'An error occurred in userController.updateVaccination'}
+    })
+  }
+}
 
 module.exports = userController;
