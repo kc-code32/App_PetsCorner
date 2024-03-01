@@ -45,8 +45,9 @@ export default function logInPage() {
   }
 
   return (
-    <div className='background-pic-login'>
-      <div className='main-div'>
+    <div id="loginpage">
+
+      <div class="content-login"> 
         <form>
           <div className='formInput mb-3'>
             <label className='form-label'>Username</label>
@@ -69,6 +70,11 @@ export default function logInPage() {
           </div>
         </form>
       </div>
+
+      <div class="background-login">
+        <img id='login-background' src='assets/image/login.jpg' alt="background"/>
+      </div>
+
     </div>
   );
 }
