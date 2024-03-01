@@ -1,10 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { tryingToLogIn } from '../reducers/reducer';
-import { useDispatch } from 'react-redux';
 
 export default function navLink({ nav, link }) {
-  const dispatch = useDispatch();
 
   let linker;
   if (link === '/logout')

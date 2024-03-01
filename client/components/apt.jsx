@@ -1,27 +1,8 @@
 import React from 'react';
-// import { useDispatch, useSelector } from 'react-redux';
-// import { tryingToLogIn, loggingIn, setUser } from '../reducers/reducer';
-// import { useNavigate } from 'react-router-dom';
-// import UserProfile from '../containers/userProfile';
-// import UserContent from '../containers/userContent';
-// import Chatroom from '../containers/chatroom';
 
 export default function Apt(props) {
-  // const username = useSelector((state) => state.reducer.username);
-  // const name = useSelector((state) => state.reducer.name);
-  // const age = useSelector((state) => state.reducer.age);
-  // const breed = useSelector((state) => state.reducer.breed);
-  // const gender = useSelector((state) => state.reducer.gender);
-  // const city = useSelector((state) => state.reducer.city);
-  // const birthday = useSelector((state) => state.reducer.birthday);
-  // const appointments = useSelector((state) => state.reducer.appointments);
-  // const shotRecords = useSelector((state) => state.reducer.shotRecords);
-  // const dispatch = useDispatch();
-  // const navigate = useNavigate();
 
   const { appointment, username, handleClickDelete } = props;
-  console.log(appointment);
-
 
   return (
     <div className='apt'>
