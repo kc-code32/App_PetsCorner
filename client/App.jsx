@@ -11,7 +11,6 @@ import { useDispatch, useSelector } from 'react-redux';
 
 const App = () => {
   const dispatch = useDispatch();
-  const state = useSelector((state) => state.reducer);
 
   useEffect(() => {
     async function checkLoggedIN() {
@@ -20,13 +19,10 @@ const App = () => {
         .then((res) => {
           dispatch(loggingIn(res.loggedIn));
           dispatch(setUser(res.id));
-          console.log(res);
         });
     }
     checkLoggedIN();
   }, []);
-
-  console.log(state);
 
   return(
     <div>

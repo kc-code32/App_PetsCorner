@@ -48,7 +48,7 @@ sessionController.startSession = (req, res, next) => {
 };
 
 /**
-* startSession - find and remove target Session from the database.
+* clearSession - find and remove target Session from the database.
 */
 sessionController.clearSession = (req, res, next) => {
   Session.findOneAndDelete({ cookieId: req.cookies.ssid }, 
