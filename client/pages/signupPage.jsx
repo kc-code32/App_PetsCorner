@@ -55,35 +55,35 @@ export default function signupPage() {
     <div className='background-pic-signup'>
       <div className='main-div'>
         <form>
-          <div className='mb-3'>
+          <div className='formInput mb-3'>
             <label className='form-label'>Username</label>
             <input placeholder='username' type='text' className='form-control' id='username' />
           </div>
-          <div className='mb-3'>
+          <div className='formInput mb-3'>
             <label className='form-label'>Name</label>
             <input placeholder='name' type='text' className='form-control' id='name' />
           </div>
-          <div className='mb-3'>
+          <div className='formInput mb-3'>
             <label className='form-label'>Age</label>
             <input placeholder='Age' type='text' className='form-control' id='age' />
           </div>
-          <div className='mb-3'>
+          <div className='formInput mb-3'>
             <label className='form-label'>Breed</label>
             <input placeholder='breed' type='text' className='form-control' id='breed' />
           </div>
-          <div className='mb-3'>
+          <div className='formInput mb-3'>
             <label className='form-label'>Gender</label>
             <input placeholder='gender' type='text' className='form-control' id='gender' />
           </div>
-          <div className='mb-3'>
+          <div className='formInput mb-3'>
             <label className='form-label'>Birthday</label>
             <input placeholder='MM/DD/YYYY' type='text' className='form-control' id='birthday' />
           </div>
-          <div className='mb-3'>
+          <div className='formInput mb-3'>
             <label className='form-label'>City</label>
             <input placeholder='city' type='text' className='form-control' id='city' />
           </div>
-          <div className='mb-3'>
+          <div className='formInput mb-3'>
             <label className='form-label'>Password</label>
             <input placeholder='password' type='password' className='form-control' id='password' />
             {userError}
