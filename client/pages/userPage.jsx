@@ -18,7 +18,7 @@ export default function userPage() {
     })
       .then((res) => res.json())
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         dispatch(setUserName(res.user.username));
         dispatch(setName(res.user.name));
         dispatch(setAge(res.user.age));
