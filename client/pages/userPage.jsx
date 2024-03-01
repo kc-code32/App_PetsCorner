@@ -6,8 +6,6 @@ import UserContent from '../containers/userContent';
 import Chats from '../containers/chats';
 
 export default function userPage() {
-  const loggedIn = useSelector((state) => state.reducer.loggedIn);
-  const user = useSelector((state) => state.reducer.currentUser);
   const state = useSelector((state) => state.reducer);
   const dispatch = useDispatch();
 
@@ -33,7 +31,6 @@ export default function userPage() {
         dispatch(setChats(res.chats));
       });
   }
-  // console.log('newstate', state);
 
   return (
     <div className='background-pic-user'>

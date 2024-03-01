@@ -5,10 +5,10 @@ import { useNavigate } from 'react-router-dom';
 
 export default function signupPage() {
   const dispatch = useDispatch();
-  const triedToLogIn = useSelector((state) => state.reducer.triedToLogIn);
   const navigate = useNavigate();
+  const triedToLogIn = useSelector((state) => state.reducer.triedToLogIn);
 
-  const login = (username, password, name, age, breed, gender, birthday, city) => {
+  const signup = (username, password, name, age, breed, gender, birthday, city) => {
     fetch('server/signup', {
       method: 'POST',
       headers: {
@@ -18,7 +18,6 @@ export default function signupPage() {
     })
       .then((res) => res.json())
       .then((res) => {
-        console.log(res);
         dispatch(setUser(res.id));
         dispatch(tryingToLogIn(res.loggedIn));
         if (res.loggedIn) {
@@ -95,7 +94,7 @@ export default function signupPage() {
               value='Sign Up'
               onClick={(event) => {
                 event.preventDefault();
-                login(document.querySelector('#username').value, document.querySelector('#password').value, 
+                signup(document.querySelector('#username').value, document.querySelector('#password').value, 
                   document.querySelector('#name').value, document.querySelector('#age').value,
                   document.querySelector('#breed').value, document.querySelector('#gender').value,
                   document.querySelector('#birthday').value, document.querySelector('#city').value,);

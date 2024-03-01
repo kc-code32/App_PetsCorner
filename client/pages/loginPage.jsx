@@ -5,9 +5,9 @@ import { useNavigate } from 'react-router-dom';
 
 export default function logInPage() {
   const dispatch = useDispatch();
-  const triedToLogIn = useSelector((state) => state.reducer.triedToLogIn);
   const navigate = useNavigate();
-
+  const triedToLogIn = useSelector((state) => state.reducer.triedToLogIn);
+  
   const login = (username, password) => {
     fetch('/server/login', {
       method: 'POST',
@@ -40,8 +40,9 @@ export default function logInPage() {
   };
 
   let userError;
-
-  if (triedToLogIn === false) userError = <div className='error'>Username/Password not found</div>;
+  if (triedToLogIn === false) {
+    userError = <div className='error'>Username/Password not found</div>;
+  }
 
   return (
     <div className='background-pic-login'>
