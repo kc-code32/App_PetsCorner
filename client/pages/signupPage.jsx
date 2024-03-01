@@ -52,8 +52,9 @@ export default function signupPage() {
     );
 
   return (
-    <div className='background-pic-signup'>
-      <div className='main-div'>
+    <div id="pageContent">
+
+      <div class="content-signup"> 
         <form>
           <div className='formInput mb-3'>
             <label className='form-label'>Username</label>
@@ -103,6 +104,11 @@ export default function signupPage() {
           </div>
         </form>
       </div>
+
+      <div class="background">
+        <img id='login-background' src='assets/image/signup.jpg' alt="background"/>
+      </div>
+
     </div>
   );
 }
