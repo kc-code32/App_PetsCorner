@@ -48,11 +48,11 @@ export default function logInPage() {
     <div className='background-pic-login'>
       <div className='main-div'>
         <form>
-          <div className='mb-3'>
+          <div className='formInput mb-3'>
             <label className='form-label'>Username</label>
             <input placeholder='username' type='text' className='form-control' id='username' />
           </div>
-          <div className='mb-3'>
+          <div className='formInput mb-3'>
             <label className='form-label'>Password</label>
             <input placeholder='password' type='password' className='form-control' id='password' />
             {userError}
