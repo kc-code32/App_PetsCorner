@@ -246,6 +246,7 @@ form {
   z-index: -100;
   height: 100%;
   width: 100%;
+  
 }
 
 .background img {
@@ -275,23 +276,44 @@ form {
   opacity: 0.8;
 }
 
-// -- userpage --
-
-.background-pic-user {
-  background-image: url('../assets/image/user.jpg');
-  background-repeat: repeat;
-  // background-color: lightgreen;
-  background-size: cover;
-  z-index: 2000;
-  width: 100%;
-  opacity: 1;
-  // object-fit:cover;
+.content-user {
+  position: relative;
+  z-index: 100;
+  // padding-left: 250px;
+  // padding-right: 100px;
+  // padding-top: 100px;
+  // min-height: 100%;
+  opacity: 0.9;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   margin-top: 50px;
   align-items: flex-start;
 }
+
+#userContent {
+  position: relative;
+  width: 100%;
+  background-size: cover;
+}
+
+// -- userpage --
+
+// .background-pic-user {
+//   background-image: url('../assets/image/user.jpg');
+//   background-repeat: repeat-y;
+//   // background-color: lightgreen;
+//   background-size: cover;
+//   z-index: 2000;
+//   width: 100%;
+//   opacity: 1;
+//   // object-fit:cover;
+//   display: flex;
+//   flex-direction: row;
+//   justify-content: space-around;
+//   margin-top: 50px;
+//   align-items: flex-start;
+// }
 
 .userProfile{
   // border:rgb(0, 0, 0) solid;
