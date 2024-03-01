@@ -56,35 +56,35 @@ export default function signupPage() {
       <div className='main-div'>
         <form>
           <div className='formInput mb-3'>
-            <label className='form-label'>Username</label>
+            <label className='form-label-pre'>Username</label>
             <input placeholder='username' type='text' className='form-control' id='username' />
           </div>
           <div className='formInput mb-3'>
-            <label className='form-label'>Name</label>
+            <label className='form-label-pre'>Name</label>
             <input placeholder='name' type='text' className='form-control' id='name' />
           </div>
           <div className='formInput mb-3'>
-            <label className='form-label'>Age</label>
+            <label className='form-label-pre'>Age</label>
             <input placeholder='Age' type='text' className='form-control' id='age' />
           </div>
           <div className='formInput mb-3'>
-            <label className='form-label'>Breed</label>
+            <label className='form-label-pre'>Breed</label>
             <input placeholder='breed' type='text' className='form-control' id='breed' />
           </div>
           <div className='formInput mb-3'>
-            <label className='form-label'>Gender</label>
+            <label className='form-label-pre'>Gender</label>
             <input placeholder='gender' type='text' className='form-control' id='gender' />
           </div>
           <div className='formInput mb-3'>
-            <label className='form-label'>Birthday</label>
+            <label className='form-label-pre'>Birthday</label>
             <input placeholder='MM/DD/YYYY' type='text' className='form-control' id='birthday' />
           </div>
           <div className='formInput mb-3'>
-            <label className='form-label'>City</label>
+            <label className='form-label-pre'>City</label>
             <input placeholder='city' type='text' className='form-control' id='city' />
           </div>
           <div className='formInput mb-3'>
-            <label className='form-label'>Password</label>
+            <label className='form-label-pre'>Password</label>
             <input placeholder='password' type='password' className='form-control' id='password' />
             {userError}
           </div>
