@@ -39,11 +39,6 @@ app.use('/assets', express.static(path.join(__dirname, '../client/assets')));
 // statically serve everything in the build folder on the route '/build'
 app.use('/build', express.static(path.join(__dirname, '../build')));
 
-// serve index.html on the route '/'
-app.get('/**', (req, res) => {
-  return res.status(200).sendFile(path.join(__dirname, '../index.html'));
-});
-
 /**
 * --- Express Routes ---
 * Express will attempt to match these routes in the order they are declared here.
@@ -56,6 +51,11 @@ app.get('/**', (req, res) => {
 * root
 */
 app.use('/server', serverRouter);
+
+// serve index.html on the route '/'
+app.get('/*', (req, res) => {
+  return res.status(200).sendFile(path.join(__dirname, '../index.html'));
+});
 
 /**
  * 404 handler

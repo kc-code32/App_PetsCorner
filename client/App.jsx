@@ -7,7 +7,7 @@ import LogIn from './pages/loginPage.jsx';
 import User from './pages/userPage.jsx';
 import './stylesheets/styles.scss';
 import { loggingIn, setUser } from './reducers/reducer.js';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 const App = () => {
   const dispatch = useDispatch();

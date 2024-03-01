@@ -6,8 +6,6 @@ import UserContent from '../containers/userContent';
 import Chats from '../containers/chats';
 
 export default function userPage() {
-  const loggedIn = useSelector((state) => state.reducer.loggedIn);
-  const user = useSelector((state) => state.reducer.currentUser);
   const state = useSelector((state) => state.reducer);
   const dispatch = useDispatch();
 
@@ -20,7 +18,6 @@ export default function userPage() {
     })
       .then((res) => res.json())
       .then((res) => {
-        console.log(res);
         dispatch(setUserName(res.user.username));
         dispatch(setName(res.user.name));
         dispatch(setAge(res.user.age));
@@ -33,6 +30,7 @@ export default function userPage() {
         dispatch(setChats(res.chats));
       });
   }
+
   // console.log('newstate', state);
 
   return (
