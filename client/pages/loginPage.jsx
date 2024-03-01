@@ -49,11 +49,11 @@ export default function logInPage() {
       <div className='main-div'>
         <form>
           <div className='formInput mb-3'>
-            <label className='form-label'>Username</label>
+            <label className='form-label-pre'>Username</label>
             <input placeholder='username' type='text' className='form-control' id='username' />
           </div>
           <div className='formInput mb-3'>
-            <label className='form-label'>Password</label>
+            <label className='form-label-pre'>Password</label>
             <input placeholder='password' type='password' className='form-control' id='password' />
             {userError}
           </div>
