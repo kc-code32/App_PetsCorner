@@ -45,7 +45,7 @@ export default function logInPage() {
   }
 
   return (
-    <div id="loginpage">
+    <div id="pageContent">
 
       <div class="content-login"> 
         <form>
@@ -71,7 +71,7 @@ export default function logInPage() {
         </form>
       </div>
 
-      <div class="background-login">
+      <div class="background">
         <img id='login-background' src='assets/image/login.jpg' alt="background"/>
       </div>
 
