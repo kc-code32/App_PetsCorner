@@ -18,7 +18,7 @@ export default function Shot(props) {
           <label>Due Date: </label><span>{shotRecord.dueDate}</span>
         </div>
         <div>
-          <form className='addShotForm'>
+          <form className='updateShotForm'>
             <div className='updateshot'>
               <label className='form-label-user'>Updated Last Vaccinated: </label>
               <input placeholder='MM/DD/YYYY' type='text' className='form-input' id='updatedLastVaccinated' />
