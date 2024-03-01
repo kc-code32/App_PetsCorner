@@ -34,10 +34,15 @@ export default function userPage() {
   // console.log('newstate', state);
 
   return (
-    <div className='background-pic-user'>
-      <UserProfile />
-      <UserContent />
-      <Chats />
+    <div id="userContent" style={{ backgroundImage: 'url("assets/image/user.jpg")', backgroundRepeat: "repeat-y" }}>
+
+      <div class="content-user"> 
+        <UserProfile />
+        <UserContent />
+        <Chats />
+      </div>
+
     </div>
   )
 }
+
