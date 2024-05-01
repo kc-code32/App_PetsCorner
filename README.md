@@ -14,20 +14,17 @@ Chatroom: User can post live chat to chatroom to share or ask helpful pet infoma
 
 # Getting Started with Pets Corner
 
-1. Creating a User Account
-   Before diving into Kafka cluster visualization, you'll need to create a user account. Simply sign up with your email and password to access the powerful features of Kafka NightOwl.
+1. Use tap to change between homepage, login page, and signup page. Login to user account to see user interface.
 
-   ![login](/client/assets/image/login.gif)
+   ![login](/img/loginpc.gif)
 
-2. Connecting to Prometheus
-   To kickstart the monitoring process, connect Kafka NightOwl to your Prometheus instance running locally. Our team has provided sample configuration files for Kafka, Prometheus, and AlertManager as well as a simple guide to connect these together.
+2. Add/Delete appointments.
 
-   ![default](/client/assets/image/default.gif)
+   ![appt](/img/apppc.gif)
 
-3. Exploring Metrics
-   Once connected, Kafka NightOwl provides an intuitive interface to explore various Kafka metrics. Select topics, partitions, or brokers, and watch as the application generates insightful charts and graphs, giving you a real-time view of your cluster's health. Customize your metrics display by dragging and resizing charts and even add more metrics to your dashboard.
+3. Add/Delete/Update Vaccination.
 
-   ![add](/client/assets/image/add.gif)
+   ![vcc](/client/assets/image/add.gif)
 
 4. Staying Informed with Alerts
    Kafka NightOwl's AlertManager integration empowers you to stay ahead of critical issues. Whenever an anomaly or error is detected, an alert will be triggered. You can acknowledge and manage these alerts directly from the application.
